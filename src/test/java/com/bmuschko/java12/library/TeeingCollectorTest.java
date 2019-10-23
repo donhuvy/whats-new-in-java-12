@@ -1,14 +1,16 @@
 package com.bmuschko.java12.library;
 
-import org.junit.jupiter.api.Test;
-
 import java.util.Optional;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.Test;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.maxBy;
+import static java.util.stream.Collectors.minBy;
+import static java.util.stream.Collectors.teeing;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TeeingCollectorTest {
+
     @Test
     void canCollectStreamFromTwoCollectorsAndMergeResult() {
         SalaryRange salaryRange = Stream
@@ -41,4 +43,5 @@ public class TeeingCollectorTest {
             return "Salaries range between " + min + " and " + max + ".";
         }
     }
+
 }

@@ -1,15 +1,15 @@
 package com.bmuschko.java12.library;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StringEnhancementTest {
+
     @Test
     void canIndentString() {
         StringBuilder yaml = new StringBuilder();
@@ -30,12 +30,10 @@ public class StringEnhancementTest {
                 "http://my.search.com?query=java server&page=1");
         List<String> transformedUrls = new ArrayList<>();
         for (String url : urls) {
-            String transformedUrl = url.transform(String::strip)
-                    .transform(URLCleaner::encodeQueryParams);
+            String transformedUrl = url.transform(String::strip).transform(URLCleaner::encodeQueryParams);
             transformedUrls.add(transformedUrl);
         }
-        assertEquals(List.of("http://google.com/",
-                "http://my.search.com?query%3Djava+server%26page%3D1"), transformedUrls);
+        assertEquals(List.of("http://google.com/", "http://my.search.com?query%3Djava+server%26page%3D1"), transformedUrls);
     }
 
     private static class URLCleaner {
@@ -51,4 +49,5 @@ public class StringEnhancementTest {
             }
         }
     }
+
 }

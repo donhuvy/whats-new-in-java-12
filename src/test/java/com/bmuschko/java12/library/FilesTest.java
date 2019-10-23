@@ -1,15 +1,15 @@
 package com.bmuschko.java12.library;
 
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.io.TempDir;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FilesTest {
+
     @Test
     void canMatchFiles(@TempDir Path tempDir) throws IOException {
         Path helloWorld = tempDir.resolve("helloworld.txt");
@@ -30,4 +30,5 @@ public class FilesTest {
             throw new RuntimeException("Failed to write content to file", e);
         }
     }
+
 }

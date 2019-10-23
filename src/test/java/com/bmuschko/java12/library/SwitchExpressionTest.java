@@ -1,17 +1,17 @@
 package com.bmuschko.java12.library;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.stream.Stream;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SwitchExpressionTest {
+
     @DisplayName("Can use traditional switch statement")
     @ParameterizedTest
     @MethodSource("storageTypes")
@@ -20,13 +20,15 @@ public class SwitchExpressionTest {
         URI result;
 
         switch (storageType) {
-            case LOCAL_FILE: result = new URI("file://~/storage");
-                             break;
-            case CLOUD: result = new URI("http://mycloud.com/data");
-                        break;
-            default: throw new IllegalArgumentException("Unknown storage type");
+            case LOCAL_FILE:
+                result = new URI("file://~/storage");
+                break;
+            case CLOUD:
+                result = new URI("http://mycloud.com/data");
+                break;
+            default:
+                throw new IllegalArgumentException("Unknown storage type");
         }
-
         assertEquals(new URI(target), result);
     }
 
@@ -40,7 +42,6 @@ public class SwitchExpressionTest {
             case CLOUD -> new URI("http://mycloud.com/data");
             default -> throw new IllegalArgumentException("Unknown storage type");
         };
-
         assertEquals(new URI(target), result);
     }
 
@@ -60,7 +61,6 @@ public class SwitchExpressionTest {
             }
             default -> throw new IllegalArgumentException("Unknown storage type");
         };
-
         assertEquals(new URI(target), result);
     }
 
@@ -75,4 +75,5 @@ public class SwitchExpressionTest {
                 Arguments.of(StorageType.CLOUD, "http://mycloud.com/data")
         );
     }
+
 }
